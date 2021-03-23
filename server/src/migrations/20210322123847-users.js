@@ -3,17 +3,20 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     //test migration which includes username
-    return queryInterface.createTable("testmigration", {
-      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-      email: { type: Sequelize.STRING, unique: true },
-      password: Sequelize.STRING,
-      firstname: Sequelize.STRING,
-      lastname: Sequelize.STRING,
-      username: Sequelize.STRING,
+    return queryInterface.sequelize.transaction(t => {
+      return Promise.all([
+        queryInterface.addColumn('users', 'username', {
+          type: Sequelize.DataTypes.STRING
+        }, { transaction: t }),
+      ]);
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("testmigration");
+    return queryInterface.sequelize.transaction(t => {
+      return Promise.all([
+        queryInterface.removeColumn('users', 'username', { transaction: t }),
+      ]);
+    });
   },
 };

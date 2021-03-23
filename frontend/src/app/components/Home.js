@@ -20,7 +20,12 @@ export default function Home() {
         Signup
       </Button>
 
-      <Button variant="primary" size="lg" block onClick={() => handleClick("login")}>
+      <Button
+        variant="primary"
+        size="lg"
+        block
+        onClick={() => handleClick("login")}
+      >
         Login
       </Button>
     </Container>

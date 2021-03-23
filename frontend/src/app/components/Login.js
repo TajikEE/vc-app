@@ -3,6 +3,7 @@ import { Container } from "reactstrap";
 import { Form, Alert, FormGroup, Input, Label, Row, Col } from "reactstrap";
 import { Button } from "react-bootstrap";
 import AuthenticationService from "../services/AuthenticationService";
+import { Link } from "react-router-dom";
 
 import "../../App.css";
 
@@ -46,7 +47,8 @@ class Login extends Component {
         <Container fluid>
           <Row style={{ marginTop: "20px" }}>
             <Col sm="12" md={{ size: 3, offset: 4 }}>
-            
+              <Link to="/signup">Go to signup page</Link>
+
               <Form onSubmit={this.doLogin}>
                 <FormGroup>
                   <Label for="email">

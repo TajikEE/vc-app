@@ -47,7 +47,7 @@ nameBaseVerifications = (req, res, next) => {
     req.body.firstname.length > 256 ||
     req.body.firstname.length < 3 ||
     req.body.lastname.length > 256 ||
-    req.body.lastname.length < 5
+    req.body.lastname.length < 3
   ) {
     res.status(400).send({
       message: "Name must be within 8 and 256 characters long",
