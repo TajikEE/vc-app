@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     //test migration which includes username
     return queryInterface.sequelize.transaction(t => {
       return Promise.all([
-        queryInterface.createTable('usernametable', 'username', {
+        queryInterface.createTable('newtable', {
           type: Sequelize.DataTypes.STRING
         }, { transaction: t }),
       ]);
@@ -15,7 +15,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     return queryInterface.sequelize.transaction(t => {
       return Promise.all([
-        queryInterface.dropTable('usernametable', 'username', { transaction: t }),
+        queryInterface.dropTable('newtable', { transaction: t }),
       ]);
     });
   },
